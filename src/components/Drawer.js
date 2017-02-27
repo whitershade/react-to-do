@@ -1,25 +1,24 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
+
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
-import RaisedButton from 'material-ui/RaisedButton';
 
-export default class DrawerOpenRightExample extends React.Component {
+export default class LeftMenu extends Component {
   static PropTypes = {
-    isOpen: PropTypes.bool,
+    isOpen: PropTypes.bool.require,
   }
 
- handleToggle = () => (this.props.LeftMenuActions.changeLeftMenuState(!this.props.isOpen));
+  handleToggle() {
+    const { LeftMenuActions: { changeLeftMenuState }, isOpen } = this.props;
+    changeLeftMenuState(!isOpen);
+  }
 
   render() {
     return (
       <div>
-        <RaisedButton
-          label='Toggle Drawer'
-          onTouchTap={this.handleToggle}
-        />
         <Drawer width={200} open={this.props.isOpen} >
           <AppBar title='AppBar'
-            onTouchTap={this.handleToggle}
+            onTouchTap={::this.handleToggle}
           />
         </Drawer>
       </div>

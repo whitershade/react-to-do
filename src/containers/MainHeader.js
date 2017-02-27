@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as LeftMenuActions from '../actions/LeftMenuActions'
-import leftMenu from '../components/Drawer'
+import MainHeader from '../components/MainHeader'
 
 function mapStateToProps(state) {
    return {
@@ -15,4 +15,4 @@ function mapStateToProps(state) {
    }
  }
 
- export default connect(mapStateToProps, mapDispatchToProps)(leftMenu)
+ export default connect(mapStateToProps, mapDispatchToProps)(MainHeader)
