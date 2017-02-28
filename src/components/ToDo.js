@@ -15,8 +15,13 @@ export default class ToDoContainer extends Component {
     const { addToDo } = this.props.todosActions,
           { value } = this.refs.inputNewToDo.input;
 
-    addToDo({ id: Date.now(), text: value });
+    addToDo({ id: Date.now(), text: value, completed: false });
     this.refs.inputNewToDo.input.value = '';
+  }
+
+  cardToDoOnClick(id) {
+    const { markToDo } = this.props.todosActions;
+    markToDo(id);
   }
 
   render() {
@@ -24,8 +29,8 @@ export default class ToDoContainer extends Component {
     return (
       <div className="todo">
         { todos.map(item => (
-          <Card key={item.id}>
-            <CardText>
+          <Card key={item.id} onClick={this.cardToDoOnClick.bind(this, item.id)}>
+            <CardText className= { item.completed ? 'todo__completed' : '' }>
               {item.text}
             </CardText>
           </Card>)) }

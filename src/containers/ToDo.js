@@ -1,11 +1,11 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as AddToDoActions from '../actions/ToDo'
-import AddToDo from '../components/ToDo'
+import ToDo from '../components/ToDo'
 
 function mapStateToProps(state) {
    return {
-     todos: state.AddToDo
+     todos: state.ToDo
    }
  }
 
@@ -15,4 +15,4 @@ function mapStateToProps(state) {
    }
  }
 
- export default connect(mapStateToProps, mapDispatchToProps)(AddToDo)
+ export default connect(mapStateToProps, mapDispatchToProps)(ToDo)

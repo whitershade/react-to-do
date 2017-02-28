@@ -13,3 +13,7 @@ body {
   display: inline-block;
   text-align: center;
 }
+
+.todo__completed {
+  text-decoration: line-through;
+}

@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import LeftMenu from './LeftMenu';
-import AddToDo from './AddToDo';
+import ToDo from './ToDo';
 
 export default combineReducers({
   LeftMenu,
-  AddToDo
+  ToDo
 })
