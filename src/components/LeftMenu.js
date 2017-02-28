@@ -5,7 +5,7 @@ import AppBar from 'material-ui/AppBar';
 
 export default class LeftMenu extends Component {
   static PropTypes = {
-    isOpen: PropTypes.bool.require,
+    isOpen: PropTypes.bool.isRequired,
   }
 
   handleToggle() {

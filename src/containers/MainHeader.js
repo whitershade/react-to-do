@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as LeftMenuActions from '../actions/LeftMenuActions'
+import * as LeftMenuActions from '../actions/LeftMenu'
 import MainHeader from '../components/MainHeader'
 
 function mapStateToProps(state) {

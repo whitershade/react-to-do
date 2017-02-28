@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 
 import MainHeader from '../containers/MainHeader';
 import LeftMenu from '../containers/LeftMenu';
-import ToDoContainer from '../components/ToDoContainer';
-
+import ToDoContainer from '../containers/ToDo';
 
 export default class App extends Component {
   render() {

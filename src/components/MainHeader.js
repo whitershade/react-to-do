@@ -3,7 +3,7 @@ import AppBar from 'material-ui/AppBar';
 
 export default class AppBarExampleIcon extends Component {
   static PropTypes = {
-    isOpen: PropTypes.bool,
+    isOpen: PropTypes.bool.isRequired,
   }
 
   handleToggle() {
@@ -14,8 +14,8 @@ export default class AppBarExampleIcon extends Component {
   render() {
     return (
       <AppBar
-        title="Title"
-        iconClassNameRight="muidocs-icon-navigation-expand-more"
+        title='Title'
+        iconClassNameRight='muidocs-icon-navigation-expand-more'
         onLeftIconButtonTouchTap={ ::this.handleToggle }
       />
     );

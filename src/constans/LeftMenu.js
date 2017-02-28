@@ -1,1 +1,1 @@
-export const LEFT_MENU_IS_OPEN = 'LEFT_MENU_IS_OPEN'
+export const LEFT_MENU_IS_OPEN = 'LEFT_MENU_IS_OPEN';
