@@ -1,12 +1,13 @@
 import React, { PropTypes, Component } from 'react'
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import FlatButton from 'material-ui/FlatButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import {Card, CardText} from 'material-ui/Card';
+import { Card, CardText } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 
 
-export default class ToDoContainer extends Component {
+export default class ToDoItems extends Component {
   static PropTypes = {
     todos: PropTypes.array.isRequired
   }
@@ -24,14 +25,20 @@ export default class ToDoContainer extends Component {
     markToDo(id);
   }
 
+  removeButtonOnClick(id) {
+    const { removeToDo } = this.props.todosActions;
+    removeToDo(id);
+  }
+
   render() {
     const { todos } = this.props;
     return (
       <div className="todo">
         { todos.map(item => (
-          <Card key={item.id} onClick={this.cardToDoOnClick.bind(this, item.id)}>
+          <Card key={item.id} onClick={ this.cardToDoOnClick.bind(this, item.id) }>
             <CardText className= { item.completed ? 'todo__completed' : '' }>
-              {item.text}
+              { item.text }
+              <FlatButton label="Remove" secondary={true} onClick= { this.removeButtonOnClick.bind(this, item.id) }/>
             </CardText>
           </Card>)) }
         <div className="todo__add-new">
@@ -40,7 +47,7 @@ export default class ToDoContainer extends Component {
           ref = 'inputNewToDo'
         />
         <br />
-        <FloatingActionButton onClick={::this.buttonAddOnClick}>
+        <FloatingActionButton onClick={ ::this.buttonAddOnClick }>
           <ContentAdd />
         </FloatingActionButton>
         </div>

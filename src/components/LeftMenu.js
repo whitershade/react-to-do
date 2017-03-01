@@ -3,6 +3,7 @@ import React, { PropTypes, Component } from 'react'
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 
+
 export default class LeftMenu extends Component {
   static PropTypes = {
     isOpen: PropTypes.bool.isRequired,

@@ -1,4 +1,4 @@
-import { ADD_TODO, MARK_TODO } from '../constans/ToDo'
+import { ADD_TODO, MARK_TODO, REMOVE_TODO } from '../constans/ToDoItems'
 
 export default function page(state = [], action) {
   switch (action.type) {
@@ -13,6 +13,9 @@ export default function page(state = [], action) {
           return Object.assign({}, item, { completed: !item.completed })
         }
       })
+
+    case REMOVE_TODO:
+      return state.filter(item => item.id !== action.id)
 
     default:
       return state;
