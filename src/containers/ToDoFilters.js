@@ -7,7 +7,7 @@ import ToDoFilters              from '../components/ToDoFilters'
 
 function mapStateToProps(state) {
    return {
-     filter: state.ToDoFilters
+     stateFilter: state.ToDoFilter
    }
  }
 

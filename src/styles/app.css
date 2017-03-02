@@ -21,3 +21,7 @@ body {
 .todo-filters {
   text-align: center;
 }
+
+.todo-filters__top-nav {
+  margin-bottom: 3px;
+}

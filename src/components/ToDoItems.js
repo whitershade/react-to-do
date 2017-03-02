@@ -1,9 +1,11 @@
 import React, { PropTypes, Component }      from 'react'
+
 import FloatingActionButton                 from 'material-ui/FloatingActionButton';
 import FlatButton                           from 'material-ui/FlatButton';
 import ContentAdd                           from 'material-ui/svg-icons/content/add';
 import { Card, CardText }                   from 'material-ui/Card';
 import TextField                            from 'material-ui/TextField';
+import Divider                              from 'material-ui/Divider';
 
 import { SHOW_ALL, SHOW_DONE, SHOW_ACTIVE } from '../constans/ToDoFilters'
 
@@ -17,16 +19,16 @@ export default class ToDoItems extends Component {
   onClickButtonAddToDo() {
     const { value } = this.refs.inputNewToDo.input;
 
-    this.props.dispatchToDoItems.actionAddToDo({ id: Date.now(), text: value, completed: false });
-    this.refs.inputNewToDo.input.value = '';
+    this.props.dispatchToDoItems.actionAddToDo({ id: Date.now(), text: value, completed: false })
+    this.refs.inputNewToDo.input.value = ''
   }
 
   onClickCardToDo(id) {
-    this.props.dispatchToDoItems.actionMarkToDo(id);
+    this.props.dispatchToDoItems.actionMarkToDo(id)
   }
 
   onClickRemoveButton(id) {
-    this.props.dispatchToDoItems.actionRemoveToDo(id);
+    this.props.dispatchToDoItems.actionRemoveToDo(id)
   }
 
   getVisibleTodos() {
@@ -47,17 +49,18 @@ export default class ToDoItems extends Component {
   render() {
     console.log(this.getVisibleTodos());
     return (
-      <div className="todo">
+      <div className='todo'>
         { this.getVisibleTodos().map(item => (
           <Card key={ item.id } onClick={ this.onClickCardToDo.bind(this, item.id) }>
             <CardText className= { item.completed ? 'todo__completed' : '' }>
               { item.text }
-              <FlatButton label="Remove" secondary={true} onClick= { this.onClickRemoveButton.bind(this, item.id) }/>
+              <FlatButton label='Remove' secondary={ true } onClick= { this.onClickRemoveButton.bind(this, item.id) }/>
             </CardText>
+            <Divider />
           </Card>)) }
-        <div className="todo__add-new">
+        <div className='todo__add-new'>
         <TextField
-          hintText="Hint Text"
+          hintText='Hint Text'
           ref = 'inputNewToDo'
         />
         <br />

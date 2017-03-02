@@ -12,8 +12,8 @@ export default class App extends Component {
       <div className='app'>
         <MainHeader />
         <LeftMenu />
-        <ToDoItems />
         <ToDoFilters />
+        <ToDoItems />
       </div>
     );
   }

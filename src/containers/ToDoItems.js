@@ -8,7 +8,7 @@ import toDoItems              from '../components/ToDoItems'
 function mapStateToProps(state) {
    return {
      stateTodos: state.ToDoItems,
-     stateFilter: state.ToDoFilters
+     stateFilter: state.ToDoFilter
    }
  }
 
