@@ -17,3 +17,7 @@ body {
 .todo__completed {
   text-decoration: line-through;
 }
+
+.todo-filters {
+  text-align: center;
+}

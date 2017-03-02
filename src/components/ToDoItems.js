@@ -1,44 +1,58 @@
-import React, { PropTypes, Component } from 'react'
+import React, { PropTypes, Component }      from 'react'
+import FloatingActionButton                 from 'material-ui/FloatingActionButton';
+import FlatButton                           from 'material-ui/FlatButton';
+import ContentAdd                           from 'material-ui/svg-icons/content/add';
+import { Card, CardText }                   from 'material-ui/Card';
+import TextField                            from 'material-ui/TextField';
 
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import FlatButton from 'material-ui/FlatButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import { Card, CardText } from 'material-ui/Card';
-import TextField from 'material-ui/TextField';
+import { SHOW_ALL, SHOW_DONE, SHOW_ACTIVE } from '../constans/ToDoFilters'
 
 
 export default class ToDoItems extends Component {
   static PropTypes = {
-    todos: PropTypes.array.isRequired
+    stateTodos: PropTypes.array.isRequired,
+    stateFilter: PropTypes.string.isRequired
   }
 
-  buttonAddOnClick() {
-    const { addToDo } = this.props.todosActions,
-          { value } = this.refs.inputNewToDo.input;
+  onClickButtonAddToDo() {
+    const { value } = this.refs.inputNewToDo.input;
 
-    addToDo({ id: Date.now(), text: value, completed: false });
+    this.props.dispatchToDoItems.actionAddToDo({ id: Date.now(), text: value, completed: false });
     this.refs.inputNewToDo.input.value = '';
   }
 
-  cardToDoOnClick(id) {
-    const { markToDo } = this.props.todosActions;
-    markToDo(id);
+  onClickCardToDo(id) {
+    this.props.dispatchToDoItems.actionMarkToDo(id);
   }
 
-  removeButtonOnClick(id) {
-    const { removeToDo } = this.props.todosActions;
-    removeToDo(id);
+  onClickRemoveButton(id) {
+    this.props.dispatchToDoItems.actionRemoveToDo(id);
+  }
+
+  getVisibleTodos() {
+    const { stateTodos, stateFilter } = this.props;
+
+    switch (stateFilter) {
+      case SHOW_ALL:
+        return stateTodos
+      case SHOW_DONE:
+        return stateTodos.filter(todo => todo.completed === true)
+      case SHOW_ACTIVE:
+        return stateTodos.filter(todo => todo.completed === false)
+      default:
+        return stateTodos
+    }
   }
 
   render() {
-    const { todos } = this.props;
+    console.log(this.getVisibleTodos());
     return (
       <div className="todo">
-        { todos.map(item => (
-          <Card key={item.id} onClick={ this.cardToDoOnClick.bind(this, item.id) }>
+        { this.getVisibleTodos().map(item => (
+          <Card key={ item.id } onClick={ this.onClickCardToDo.bind(this, item.id) }>
             <CardText className= { item.completed ? 'todo__completed' : '' }>
               { item.text }
-              <FlatButton label="Remove" secondary={true} onClick= { this.removeButtonOnClick.bind(this, item.id) }/>
+              <FlatButton label="Remove" secondary={true} onClick= { this.onClickRemoveButton.bind(this, item.id) }/>
             </CardText>
           </Card>)) }
         <div className="todo__add-new">
@@ -47,7 +61,7 @@ export default class ToDoItems extends Component {
           ref = 'inputNewToDo'
         />
         <br />
-        <FloatingActionButton onClick={ ::this.buttonAddOnClick }>
+        <FloatingActionButton onClick={ ::this.onClickButtonAddToDo }>
           <ContentAdd />
         </FloatingActionButton>
         </div>

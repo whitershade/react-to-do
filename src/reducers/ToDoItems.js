@@ -1,6 +1,6 @@
 import { ADD_TODO, MARK_TODO, REMOVE_TODO } from '../constans/ToDoItems'
 
-export default function page(state = [], action) {
+export default function reducerToDoItems(state = [], action) {
   switch (action.type) {
     case ADD_TODO:
       return [ ...state, action.item ]
