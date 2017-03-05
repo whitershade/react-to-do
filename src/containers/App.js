@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 
 import LeftMenu             from '../containers/LeftMenu';
-import ToDoItems            from '../containers/ToDoItems';
 import MainHeader           from '../containers/MainHeader';
-import ToDoFilters          from '../containers/ToDoFilters';
 
 
 export default class App extends Component {
@@ -12,8 +11,7 @@ export default class App extends Component {
       <div className='app'>
         <MainHeader />
         <LeftMenu />
-        <ToDoFilters />
-        <ToDoItems /> 
+        { this.props.children }
       </div>
     );
   }

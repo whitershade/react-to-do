@@ -68,6 +68,6 @@ module.exports = {
     historyApiFallback: true,
 
     // enable HMR on the server
-    hot: true,
+    hot: true
   },
 };

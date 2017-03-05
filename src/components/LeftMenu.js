@@ -1,7 +1,8 @@
 import React, { PropTypes, Component } from 'react'
+import { Link }                        from 'react-router'
 
-import Drawer from 'material-ui/Drawer';
-import AppBar from 'material-ui/AppBar';
+import Drawer                          from 'material-ui/Drawer'
+import AppBar                          from 'material-ui/AppBar'
 
 
 export default class LeftMenu extends Component {
@@ -21,6 +22,8 @@ export default class LeftMenu extends Component {
           <AppBar title='AppBar'
             onTouchTap={::this.handleToggle}
           />
+        <Link to="/">ToDo</Link>  
+        <Link to="/deleted">About</Link>
         </Drawer>
       </div>
     );
