@@ -1,11 +1,12 @@
-import { createStore, applyMiddleware } from 'redux'
+import { compose, createStore, applyMiddleware } from 'redux'
 import rootReducer from '../reducers'
 import createLogger from 'redux-logger'
+import {persistStore, autoRehydrate} from 'redux-persist'
 import thunk from 'redux-thunk' // <-- добавили redux-thunk
 
 export default function configureStore(initialState) {
   const logger = createLogger()
-  const store = createStore(rootReducer, initialState, applyMiddleware(thunk, logger)) // <!-- добавляем его в цепочку middleware'ов
+  const store = createStore(rootReducer, initialState, compose(applyMiddleware(thunk, logger), autoRehydrate())) // <!-- добавляем его в цепочку middleware'ов
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {

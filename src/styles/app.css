@@ -25,3 +25,11 @@ body {
 .todo-filters__top-nav {
   margin-bottom: 3px;
 }
+
+.aside-menu__link,
+.aside-menu__link:active,
+.aside-menu__link:focus,
+.aside-menu__link:visited,
+.aside-menu__link:hover {
+  text-decoration: none;
+}
