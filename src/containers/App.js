@@ -13,7 +13,7 @@ export default class App extends Component {
         <MainHeader />
         <LeftMenu />
         <ToDoFilters />
-        <ToDoItems />
+        <ToDoItems /> 
       </div>
     );
   }

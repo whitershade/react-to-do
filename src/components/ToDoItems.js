@@ -47,7 +47,6 @@ export default class ToDoItems extends Component {
   }
 
   render() {
-    console.log(this.getVisibleTodos());
     return (
       <div className='todo'>
         { this.getVisibleTodos().map(item => (

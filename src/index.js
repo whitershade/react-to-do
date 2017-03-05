@@ -1,26 +1,36 @@
 import 'babel-polyfill';
 
-import React           from 'react'
-import { render }      from 'react-dom'
-import { Provider }    from 'react-redux'
+import React                from 'react';
+import ReactDOM             from 'react-dom';
+import { Provider }         from 'react-redux'
+import { AppContainer }     from 'react-hot-loader';
 
-import App             from './containers/App'
-import configureStore  from './store/configureStore'
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import getMuiTheme          from 'material-ui/styles/getMuiTheme'
+import MuiThemeProvider     from 'material-ui/styles/MuiThemeProvider'
+
+import configureStore       from './store/configureStore'
+
+import App                  from './containers/App'
+
 import './styles/app.css'
 
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
+const rootEl = document.getElementById('root')
 const store = configureStore()
+const render = Component =>
+  ReactDOM.render(
+    <AppContainer>
+      <Provider store={store}>
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <Component />
+        </MuiThemeProvider>
+      </Provider>
+    </AppContainer>,
+    rootEl
+  );
 
-render(
-  <Provider store={store}>
-    <MuiThemeProvider muiTheme={getMuiTheme()}>
-      <App />
-    </MuiThemeProvider>
-  </Provider>,
-  document.getElementById('app')
-)
+render(App);
+if (module.hot) module.hot.accept('./containers/App', () => render(App));
