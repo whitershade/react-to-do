@@ -6,6 +6,7 @@ import MainHeader from '../components/MainHeader'
 function mapStateToProps(state) {
    return {
      isOpen: state.LeftMenu.isOpen,
+     routing: state.routing.locationBeforeTransitions
    }
  }
 

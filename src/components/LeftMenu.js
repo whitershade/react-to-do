@@ -16,14 +16,15 @@ export default class LeftMenu extends Component {
   }
 
   render() {
+    console.log(this.props.routing);
     return (
       <div>
         <Drawer width={200} open={this.props.isOpen} >
           <AppBar title='AppBar'
             onTouchTap={::this.handleToggle}
           />
-        <Link to="/">ToDo</Link>  
-        <Link to="/deleted">About</Link>
+        <Link to="/">ToDo</Link>
+        <Link to="/deleted">Deleted</Link>
         </Drawer>
       </div>
     );

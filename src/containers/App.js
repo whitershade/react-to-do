@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
 
 import LeftMenu             from '../containers/LeftMenu';
 import MainHeader           from '../containers/MainHeader';

@@ -6,6 +6,7 @@ import leftMenu from '../components/LeftMenu'
 function mapStateToProps(state) {
    return {
      isOpen: state.LeftMenu.isOpen,
+     routing: state.routing.locationBeforeTransitions
    }
  }
 

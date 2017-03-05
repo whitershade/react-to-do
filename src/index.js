@@ -3,9 +3,11 @@ import 'babel-polyfill';
 import React                      from 'react';
 import ReactDOM                   from 'react-dom';
 import { Provider }               from 'react-redux'
-import { Router }                 from 'react-router'
+
+import { Router, browserHistory } from 'react-router'
+import { syncHistoryWithStore }   from 'react-router-redux'
+
 import { AppContainer }           from 'react-hot-loader'
-import createBrowserHistory       from 'history/lib/createBrowserHistory'
 
 import injectTapEventPlugin       from 'react-tap-event-plugin';
 import getMuiTheme                from 'material-ui/styles/getMuiTheme'
@@ -17,21 +19,24 @@ import { routes }                 from './routes'
 
 import './styles/app.css'
 
+
 injectTapEventPlugin();
 
-const rootEl = document.getElementById('root')
-const store = configureStore()
-const render = () =>
-  ReactDOM.render(
-    <AppContainer>
-      <Provider store={store}>
-        <MuiThemeProvider muiTheme={getMuiTheme()}>
-          <Router history={createBrowserHistory()} routes={routes} />
-        </MuiThemeProvider>
-      </Provider>
-    </AppContainer>,
-    rootEl
-  );
+
+const rootEl = document.getElementById('root'),
+      store = configureStore(),
+      history = syncHistoryWithStore(browserHistory, store),
+      render = () =>
+          ReactDOM.render(
+            <AppContainer>
+              <Provider store={ store }>
+                <MuiThemeProvider muiTheme={ getMuiTheme() }>
+                  <Router history={ history } routes={ routes } />
+                </MuiThemeProvider>
+              </Provider>
+            </AppContainer>,
+            rootEl
+          );
 
 render();
 if (module.hot) module.hot.accept('./containers/App', () => render());
