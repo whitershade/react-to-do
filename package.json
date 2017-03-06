@@ -6,9 +6,9 @@
   "scripts": {
     "start": "webpack-dev-server",
     "lint": "eslint src",
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf docs",
     "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.production.js",
-    "postbuild": "copyfiles index.html dist"
+    "postbuild": "copyfiles -f github_pages/index.html github_pages/404.html docs"
   },
   "repository": {
     "type": "git",
