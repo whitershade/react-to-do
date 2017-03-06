@@ -3,6 +3,7 @@ import React, { PropTypes, Component } from 'react'
 import Drawer                          from 'material-ui/Drawer'
 import AppBar                          from 'material-ui/AppBar'
 
+import { rootPath, deletedPath}        from '../constans/Routes.js'
 import AsideMenuLink                   from './AsideMenuLink'
 
 
@@ -23,12 +24,12 @@ export default class LeftMenu extends Component {
 
   render() {
     const links = [{
-        link: '/',
+        link: rootPath,
         classLink: 'aside-menu__link',
         text: 'ToDo'
       },
       {
-        link: '/deleted',
+        link: deletedPath,
         classLink: 'aside-menu__link',
         text: 'Deleted'
       }

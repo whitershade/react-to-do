@@ -18,7 +18,7 @@ import configureStore             from './store/configureStore'
 import { routes }                 from './routes'
 
 import './styles/app.css'
-import {persistStore, autoRehydrate} from 'redux-persist'
+import { persistStore } from 'redux-persist'
 
 injectTapEventPlugin();
 
@@ -37,7 +37,7 @@ const rootEl = document.getElementById('root'),
             </AppContainer>,
             rootEl
           );
-          
+
 // begin periodically persisting the store
 persistStore(store)
 render();

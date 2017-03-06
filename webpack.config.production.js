@@ -2,7 +2,8 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['babel-polyfill',
+         './src/index.js'],
 
   output: {
     filename: 'static/bundle.js',
@@ -20,6 +21,10 @@ module.exports = {
           'babel-loader'
         ],
         exclude: /node_modules/
+      },
+      {
+        test:   /\.css$/,
+        loader: 'style-loader!css-loader'
       }
     ]
   },
