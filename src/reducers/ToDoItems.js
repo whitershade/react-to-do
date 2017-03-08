@@ -1,4 +1,4 @@
-import { ADD_TODO, MARK_TODO_AS_DONE, MARK_TODO_AS_DELETED, FINALLY_REMOVE_TODO } from '../constans/ToDoItems'
+import { ADD_TODO, MARK_TODO_AS_DONE, MARK_TODO_AS_DELETED, FINALLY_REMOVE_TODO, RESTORE_DELETED_TODO } from '../constans/ToDoItems'
 
 export default function reducerToDoItems(state = [], action) {
   switch (action.type) {
@@ -23,8 +23,18 @@ export default function reducerToDoItems(state = [], action) {
         }
       })
 
+    case RESTORE_DELETED_TODO:
+      return state.map(item => {
+        if(item.id === action.id) {
+          return Object.assign({}, item, { deleted: false})
+        } else {
+          return item
+        }
+      })
+
     case FINALLY_REMOVE_TODO:
       return state.filter(item => item.id !== action.id)
+
 
     default:
       return state;

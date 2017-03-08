@@ -25,8 +25,17 @@ export default class ToDoItems extends Component {
     this.props.dispatchToDoItems.actionFinallyRemoveToDo(id)
   }
 
+  onClickRestoreToDo(id) {
+    this.props.dispatchToDoItems.actionRestoreToDo(id)
+  }
+
   getVisibleTodos() {
-    const { stateTodos, stateFilter } = this.props
+    const { stateTodos, stateFilter, stateShowDeleted } = this.props
+
+    if(stateShowDeleted) {
+      return stateTodos
+    }
+
     switch (stateFilter) {
       case SHOW_ALL:
         return stateTodos
@@ -52,6 +61,10 @@ export default class ToDoItems extends Component {
                                                                         this.onClickFinallyDeleteToDo.bind(this, item.id)
                                                                       }
                                                                         />
+              { stateShowDeleted && <FlatButton label='Restore'
+                                                secondary={ false }
+                                                onClick={ this.onClickRestoreToDo.bind(this, item.id) }
+                                                />}
               <div className='todo__checkbox-done'>
                 {!stateShowDeleted && (
                       <Checkbox onCheck={ this.onClickCheckboxToDo.bind(this, item.id) }
