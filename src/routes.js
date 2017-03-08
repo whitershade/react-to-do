@@ -5,7 +5,7 @@ import { rootPath, deletedPath} from './constans/Routes.js'
 
 import App from './containers/App'
 import ToDo from './containers/ToDo'
-import Deleted from './components/Deleted'
+import Deleted from './containers/ToDoDeleted'
 
 export const routes = (
   <div>

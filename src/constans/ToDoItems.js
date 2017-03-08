@@ -1,3 +1,5 @@
-export const ADD_TODO = 'ADD_TODO';
-export const MARK_TODO = 'MARK_TODO';
-export const REMOVE_TODO = 'REMOVE_TODO';
+export const ADD_TODO = 'ADD_TODO'
+export const MARK_TODO_AS_DONE = 'MARK_TODO_AS_DONE'
+export const MARK_TODO_AS_DELETED = 'MARK_TODO_AS_DELETED'
+export const FINALLY_REMOVE_TODO = 'FINALLY_REMOVE_TODO'
+export const SHOW_DELETED_TODOS = 'SHOW_DELETED_TODOS'

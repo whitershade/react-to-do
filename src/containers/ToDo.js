@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 
-import ToDoItems            from '../containers/ToDoItems';
-import ToDoFilters          from '../containers/ToDoFilters';
+import ToDoFilters          from './ToDoStaff/ToDoFilters'
+import ToDoItems            from './ToDoStaff/ToDoItems'
+import ToDoAddNew           from './ToDoStaff/ToDoAddNew'
 
 
 export default class ToDo extends Component {
   render() {
     return (
-      <div>
+      <div className='todo'>
         <ToDoFilters />
-        <ToDoItems />
+        <ToDoItems showDeleted={ false } />
+        <ToDoAddNew />
       </div>
     );
   }

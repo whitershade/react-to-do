@@ -1,39 +1,32 @@
 import React, { PropTypes, Component }      from 'react'
 
-import FloatingActionButton                 from 'material-ui/FloatingActionButton';
-import FlatButton                           from 'material-ui/FlatButton';
-import ContentAdd                           from 'material-ui/svg-icons/content/add';
-import { Card, CardText }                   from 'material-ui/Card';
-import TextField                            from 'material-ui/TextField';
-import Divider                              from 'material-ui/Divider';
+import FlatButton                           from 'material-ui/FlatButton'
+import { Card, CardText }                   from 'material-ui/Card'
+import Checkbox                             from 'material-ui/Checkbox'
 
 import { SHOW_ALL, SHOW_DONE, SHOW_ACTIVE } from '../constans/ToDoFilters'
-
 
 export default class ToDoItems extends Component {
   static PropTypes = {
     stateTodos: PropTypes.array.isRequired,
-    stateFilter: PropTypes.string.isRequired
+    stateFilter: PropTypes.string.isRequired,
+    stateShowDeleted: PropTypes.bool.isRequired
   }
 
-  onClickButtonAddToDo() {
-    const { value } = this.refs.inputNewToDo.input;
-
-    this.props.dispatchToDoItems.actionAddToDo({ id: Date.now(), text: value, completed: false })
-    this.refs.inputNewToDo.input.value = ''
+  onClickCheckboxToDo(id) {
+    this.props.dispatchToDoItems.actionMarkToDoAsDone(id)
   }
 
-  onClickCardToDo(id) {
-    this.props.dispatchToDoItems.actionMarkToDo(id)
+  onClickMarkToDoAsDeleted(id) {
+    this.props.dispatchToDoItems.actionMakrToDoAsDeleted(id)
   }
 
-  onClickRemoveButton(id) {
-    this.props.dispatchToDoItems.actionRemoveToDo(id)
+  onClickFinallyDeleteToDo(id) {
+    this.props.dispatchToDoItems.actionFinallyRemoveToDo(id)
   }
 
   getVisibleTodos() {
-    const { stateTodos, stateFilter } = this.props;
-
+    const { stateTodos, stateFilter } = this.props
     switch (stateFilter) {
       case SHOW_ALL:
         return stateTodos
@@ -47,26 +40,27 @@ export default class ToDoItems extends Component {
   }
 
   render() {
+    const { stateShowDeleted } = this.props
     return (
-      <div className='todo'>
+      <div className='todo-items'>
         { this.getVisibleTodos().map(item => (
-          <Card key={ item.id } onClick={ this.onClickCardToDo.bind(this, item.id) }>
-            <CardText className= { item.completed ? 'todo__completed' : '' }>
+          <Card key={ item.id }>
+            <CardText className={ item.completed ? 'todo__completed' : '' }>
               { item.text }
-              <FlatButton label='Remove' secondary={ true } onClick= { this.onClickRemoveButton.bind(this, item.id) }/>
+              <FlatButton label='Remove' secondary={ true } onClick= { !stateShowDeleted ?
+                                                                        this.onClickMarkToDoAsDeleted.bind(this, item.id) :
+                                                                        this.onClickFinallyDeleteToDo.bind(this, item.id)
+                                                                      }
+                                                                        />
+              <div className='todo__checkbox-done'>
+                {!stateShowDeleted && (
+                      <Checkbox onCheck={ this.onClickCheckboxToDo.bind(this, item.id) }
+                                defaultChecked={ item.completed }
+                      />)}
+              </div>
             </CardText>
-            <Divider />
-          </Card>)) }
-        <div className='todo__add-new'>
-        <TextField
-          hintText='Hint Text'
-          ref = 'inputNewToDo'
-        />
-        <br />
-        <FloatingActionButton onClick={ ::this.onClickButtonAddToDo }>
-          <ContentAdd />
-        </FloatingActionButton>
-        </div>
+          </Card>))
+         }
       </div>
     );
   }

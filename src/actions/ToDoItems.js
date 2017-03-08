@@ -1,22 +1,23 @@
-import { ADD_TODO, MARK_TODO, REMOVE_TODO } from '../constans/ToDoItems'
+import { MARK_TODO_AS_DONE, MARK_TODO_AS_DELETED, FINALLY_REMOVE_TODO } from '../constans/ToDoItems'
 
-export function actionAddToDo(item) {
-  return {
-      type: ADD_TODO,
-      item
-    }
-}
 
-export function actionMarkToDo(id) {
+export function actionMarkToDoAsDone(id) {
   return {
-    type: MARK_TODO,
+    type: MARK_TODO_AS_DONE,
     id
   }
 }
 
-export function actionRemoveToDo(id) {
+export function actionMakrToDoAsDeleted(id) {
   return {
-    type: REMOVE_TODO,
+    type: MARK_TODO_AS_DELETED,
+    id
+  }
+}
+
+export function actionFinallyRemoveToDo(id) {
+  return {
+    type: FINALLY_REMOVE_TODO,
     id
   }
 }

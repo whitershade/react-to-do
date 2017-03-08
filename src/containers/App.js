@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import LeftMenu             from '../containers/LeftMenu';
-import MainHeader           from '../containers/MainHeader';
+import LeftMenu             from './AppStaff/LeftMenu';
+import MainHeader           from './AppStaff/MainHeader';
 
 
 export default class App extends Component {

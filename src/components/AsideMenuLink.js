@@ -4,10 +4,11 @@ import { Link }                        from 'react-router'
 import MenuItem                        from 'material-ui/MenuItem'
 
 
-export default class LeftMenu extends Component {
+export default class AsideMenuLink extends Component {
   static PropTypes = {
-    isOpen: PropTypes.bool.isRequired,
-    link: PropTypes.string.isRequired
+    link: PropTypes.string.isRequired,
+    classLink: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
   }
 
   render() {

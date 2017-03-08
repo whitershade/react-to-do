@@ -9,7 +9,7 @@ import AsideMenuLink                   from './AsideMenuLink'
 
 export default class LeftMenu extends Component {
   static PropTypes = {
-    isOpen: PropTypes.bool.isRequired,
+    isOpen: PropTypes.bool.isRequired
   }
 
   constructor() {
@@ -18,8 +18,8 @@ export default class LeftMenu extends Component {
   }
 
   handleToggle() {
-    const { LeftMenuActions: { changeLeftMenuState }, isOpen } = this.props;
-    changeLeftMenuState(!isOpen);
+    const { LeftMenuActions: { changeLeftMenuState }, stateIsOpen } = this.props
+    changeLeftMenuState(!stateIsOpen);
   }
 
   render() {
@@ -36,14 +36,14 @@ export default class LeftMenu extends Component {
     ]
     return (
       <div>
-        <Drawer width={200} open={ this.props.isOpen } >
+        <Drawer width={200} open={ this.props.stateIsOpen } >
           <AppBar title='AppBar'
             onTouchTap={ this.handleToggle }
           />
             { links.map((item, i) => <AsideMenuLink key={ i }
                                                     link={ item.link }
                                                     classLink={ item.classLink }
-                                                    text ={ item.text }
+                                                    text={ item.text }
                                       />)}
         </Drawer>
       </div>

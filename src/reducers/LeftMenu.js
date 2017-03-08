@@ -3,7 +3,7 @@ import { LOCATION_CHANGE }   from 'react-router-redux'
 import { REHYDRATE }         from 'redux-persist/constants'
 
 export default function page(state = { isOpen: false }, action) {
-  switch (action.type) { 
+  switch (action.type) {
     case LEFT_MENU_IS_OPEN:
       return Object.assign({}, state, { isOpen: action.isOpen })
 

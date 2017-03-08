@@ -8,10 +8,15 @@ body {
   text-align: center;
 }
 
-.todo__add-new {
+.todo-add-new {
   margin: 20px auto;
   display: inline-block;
   text-align: center;
+}
+
+.todo__checkbox-done {
+  text-align: left;
+  float: left;
 }
 
 .todo__completed {
