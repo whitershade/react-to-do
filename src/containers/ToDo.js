@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 import ToDoFilters          from './ToDoStaff/ToDoFilters'
-import ToDoItems            from './ToDoStaff/ToDoItems'
 import ToDoAddNew           from './ToDoStaff/ToDoAddNew'
+import ToDoItems            from './ToDoStaff/ToDoItems'
 
 
 export default class ToDo extends Component {
@@ -10,8 +10,8 @@ export default class ToDo extends Component {
     return (
       <div className='todo'>
         <ToDoFilters />
-        <ToDoItems showDeleted={ false } />
         <ToDoAddNew />
+        <ToDoItems />
       </div>
     );
   }

@@ -1,4 +1,10 @@
-import { MARK_TODO_AS_DONE, MARK_TODO_AS_DELETED, FINALLY_REMOVE_TODO, RESTORE_DELETED_TODO } from '../constans/ToDoItems'
+import {
+   MARK_TODO_AS_DONE,
+   MARK_TODO_AS_DELETED,
+   FINALLY_REMOVE_TODO,
+   RESTORE_DELETED_TODO,
+   FINALLY_REMOVE_ALL_DELETED_TODOES
+ } from '../constans/ToDoItems'
 
 
 export function actionMarkToDoAsDone(id) {
@@ -26,5 +32,11 @@ export function actionRestoreToDo(id) {
   return {
     type: RESTORE_DELETED_TODO,
     id
+  }
+}
+
+export function actionFinallyDeleteRemovedToDoes() {
+  return {
+    type: FINALLY_REMOVE_ALL_DELETED_TODOES
   }
 }

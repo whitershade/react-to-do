@@ -9,15 +9,29 @@ export default class ToDoAddNew extends Component {
   constructor() {
     super()
 
+    this.state = {
+      errorMessage: ''
+    }
+
     this.onClickButtonAddToDo = ::this.onClickButtonAddToDo
+    this.inputOnChange = ::this.inputOnChange
   }
 
   componentDidMount() {
     this.refs.inputNewToDo.input.focus()
   }
 
+  inputOnChange() {
+    this.setState({ errorMessage: '' })
+  }
+
   onClickButtonAddToDo() {
     const { input } = this.refs.inputNewToDo
+
+    if(input.value === '') {
+      this.setState({ errorMessage: 'This is required field' })
+      return
+    }
 
     this.props.dispatchToDoAddNew.actionAddToDo({
       id: Date.now(),
@@ -34,8 +48,10 @@ export default class ToDoAddNew extends Component {
     return (
         <div className='todo-add-new'>
           <TextField
-            hintText='Hint Text'
+            hintText = 'Hint Text'
             ref = 'inputNewToDo'
+            errorText = { this.state.errorMessage }
+            onChange = { this.inputOnChange }
           />
         <br />
           <FloatingActionButton onClick={ this.onClickButtonAddToDo }>

@@ -31,6 +31,10 @@ body {
   margin-bottom: 3px;
 }
 
+.todo-deleted-menu {
+  padding: 20px 0;
+}
+
 .aside-menu__link,
 .aside-menu__link:active,
 .aside-menu__link:focus,
