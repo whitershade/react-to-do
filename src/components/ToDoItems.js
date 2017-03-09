@@ -13,6 +13,23 @@ export default class ToDoItems extends Component {
     stateShowDeleted: PropTypes.bool.isRequired
   }
 
+  changeProgressBarValue() {
+    const commonToDoesLength = this.props.stateTodos.length,
+          doneToDoesLength = this.props.stateTodos.filter(item => item.completed === true && item.deleted === false).length,
+          result = 100 * doneToDoesLength / commonToDoesLength
+          return isNaN(result) ? 0 : result
+  }
+
+  componentDidMount() {
+     this.props.dispatchToDoItems.actionProgressBarChangeValue(this.changeProgressBarValue())
+   }
+
+  componentDidUpdate() {
+    if(this.changeProgressBarValue() !== this.props.stateProgressBarValue) {
+       this.props.dispatchToDoItems.actionProgressBarChangeValue(this.changeProgressBarValue())
+    }
+  }
+
   onClickCheckboxToDo(id) {
     this.props.dispatchToDoItems.actionMarkToDoAsDone(id)
   }
