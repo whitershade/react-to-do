@@ -22,7 +22,6 @@ import { persistStore } from 'redux-persist'
 
 injectTapEventPlugin();
 
-
 const rootEl = document.getElementById('root'),
       store = configureStore(),
       history = syncHistoryWithStore(browserHistory, store),
@@ -39,6 +38,6 @@ const rootEl = document.getElementById('root'),
           );
 
 // begin periodically persisting the store
-persistStore(store)
-render();
-if (module.hot) module.hot.accept('./containers/App', () => render());
+persistStore(store, { blacklist: ['routing', 'ToDoDeleted'] })
+render()
+if (module.hot) module.hot.accept('./containers/App', () => render())

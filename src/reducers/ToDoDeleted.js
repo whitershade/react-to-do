@@ -1,5 +1,5 @@
-import { LOCATION_CHANGE }   from 'react-router-redux'
-import { deletedPath }       from '../constants/Routes'
+import { LOCATION_CHANGE }                       from 'react-router-redux'
+import { deletedPath }                           from '../constants/Routes'
 import { OPEN_FINALLY_DELETE_ALL_TODOES_DIALOG } from '../constants/ToDoDeletedActionsDialogs'
 
 export default function page(state = { DeletedToDoShow: false, finallyDeleteDialogIsOpen: false }, action) {

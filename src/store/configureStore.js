@@ -1,7 +1,7 @@
 import { compose, createStore, applyMiddleware } from 'redux'
 import rootReducer from '../reducers'
 import createLogger from 'redux-logger'
-import {persistStore, autoRehydrate} from 'redux-persist'
+import { autoRehydrate} from 'redux-persist'
 import thunk from 'redux-thunk' // <-- добавили redux-thunk
 
 export default function configureStore(initialState) {
