@@ -35,6 +35,24 @@ body {
   padding: 20px 0;
 }
 
+.todo__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  min-height: 48px;
+}
+
+.todo-items input {
+  text-align: center;
+}
+
+.todo__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .aside-menu__link,
 .aside-menu__link:active,
 .aside-menu__link:focus,

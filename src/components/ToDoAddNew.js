@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
+import TextField            from 'material-ui/TextField'
+import ContentAdd           from 'material-ui/svg-icons/content/add'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
-import ContentAdd from 'material-ui/svg-icons/content/add'
-import TextField from 'material-ui/TextField'
 
 
 export default class ToDoAddNew extends Component {
@@ -37,7 +37,8 @@ export default class ToDoAddNew extends Component {
       id: Date.now(),
       text: input.value,
       completed: false,
-      deleted: false
+      deleted: false,
+      onChange: false
     })
 
     input.value = ''

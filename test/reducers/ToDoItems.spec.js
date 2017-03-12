@@ -53,4 +53,16 @@ describe('ToDoItems reducer', () => {
               ], actions.finallyDeleteRemovedToDoes())
     ).toEqual([ { id: 3, deleted: false } ])
   })
+
+  it(`should handle ${ types.MARK_TODO_AS_ONCHANGE }`, () => {
+    expect(
+      reducer([ { id: 1, onChange: false }, { id: 2, onChange: false } ], actions.markToDoAsOnChange(1, true))
+    ).toEqual([ { id: 1, onChange: true }, { id: 2, onChange: false } ])
+  })
+
+  it(`should handle ${ types.CHANGE_TO_DO_TEXT }`, () => {
+    expect(
+      reducer([ { id: 1, text: 'oldText' }, { id: 2, text: 'oldText' } ], actions.changeToDoText(1, 'newText'))
+    ).toEqual([ { id: 1, text: 'newText' }, { id: 2, text: 'oldText' } ])
+  })
 })

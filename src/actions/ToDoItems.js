@@ -22,6 +22,14 @@ export function markToDoAsDeleted(id) {
   }
 }
 
+export function markToDoAsOnChange(id, onChange) {
+  return {
+    type: types.MARK_TODO_AS_ONCHANGE,
+    id,
+    onChange
+  }
+}
+
 export function finallyRemoveToDo(id) {
   return {
     type: types.FINALLY_REMOVE_TODO,
@@ -39,5 +47,13 @@ export function restoreToDo(id) {
 export function finallyDeleteRemovedToDoes() {
   return {
     type: types.FINALLY_REMOVE_ALL_DELETED_TODOES
+  }
+}
+
+export function changeToDoText(id, text) {
+  return {
+    type: types.CHANGE_TO_DO_TEXT,
+    id,
+    text
   }
 }

@@ -1,13 +1,13 @@
-import * as constants from '../constants/ToDoItems'
+import * as types from '../constants/ToDoItems'
 
 export const initialState = [];
 
 export default function reducerToDoItems(state = initialState, action) {
   switch (action.type) {
-    case constants.ADD_TODO:
+    case types.ADD_TODO:
       return [ ...state, action.item ]
 
-    case constants.MARK_TODO_AS_DONE:
+    case types.MARK_TODO_AS_DONE:
       return state.map(item => {
         if(item.id === action.id) {
           return { ...item, completed: !item.completed }
@@ -16,7 +16,27 @@ export default function reducerToDoItems(state = initialState, action) {
         }
       })
 
-    case constants.MARK_TODO_AS_DELETED:
+    case types.MARK_TODO_AS_ONCHANGE: {
+      return state.map(item => {
+        if(item.id === action.id) {
+          return { ...item, onChange: action.onChange }
+        } else {
+          return item
+        }
+      })
+    }
+
+    case types.CHANGE_TO_DO_TEXT: {
+      return state.map(item => {
+        if(item.id === action.id) {
+          return { ...item, text: action.text }
+        } else {
+          return item
+        }
+      })
+    }
+
+    case types.MARK_TODO_AS_DELETED:
       return state.map(item => {
         if(item.id === action.id) {
           return { ...item, deleted: true }
@@ -25,7 +45,7 @@ export default function reducerToDoItems(state = initialState, action) {
         }
       })
 
-    case constants.RESTORE_DELETED_TODO:
+    case types.RESTORE_DELETED_TODO:
       return state.map(item => {
         if(item.id === action.id) {
           return { ...item, deleted: false }
@@ -34,10 +54,10 @@ export default function reducerToDoItems(state = initialState, action) {
         }
       })
 
-    case constants.FINALLY_REMOVE_TODO:
+    case types.FINALLY_REMOVE_TODO:
       return state.filter(item => item.id !== action.id)
 
-    case constants.FINALLY_REMOVE_ALL_DELETED_TODOES:
+    case types.FINALLY_REMOVE_ALL_DELETED_TODOES:
       return state.filter(item => item.deleted === false)
 
     default:
