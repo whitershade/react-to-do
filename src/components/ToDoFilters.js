@@ -3,7 +3,7 @@ import Paper                                    from 'material-ui/Paper'
 import FontIcon                                 from 'material-ui/FontIcon'
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation'
 
-import { SHOW_ALL, SHOW_DONE, SHOW_ACTIVE }     from '../constants/ToDoFilters'
+import * as types                               from '../constants/ToDoFilters'
 
 
 const recentsIcon = <FontIcon className='material-icons'></FontIcon>;
@@ -23,12 +23,14 @@ export default class ToDoFilters extends Component {
 
   getCurrentNavPosition() {
     switch (this.props.stateFilter) {
-      case SHOW_ALL:
+      case types.SHOW_ALL:
         return 0
-      case SHOW_DONE:
+      case types.SHOW_DONE:
         return 1
-      case SHOW_ACTIVE:
+      case types.SHOW_ACTIVE:
         return 2
+      case types.SHOW_IMPORTANT:
+        return 3
       default:
         return 0
     }
@@ -44,20 +46,26 @@ export default class ToDoFilters extends Component {
                <BottomNavigationItem
                  label='All'
                  icon={ recentsIcon }
-                 disabled= { stateFilter === SHOW_ALL }
-                 onTouchTap={ () => this.setFilter(SHOW_ALL) }
+                 disabled= { stateFilter === types.SHOW_ALL }
+                 onTouchTap={ () => this.setFilter(types.SHOW_ALL) }
                />
                <BottomNavigationItem
                  label='Done'
                  icon={recentsIcon}
-                 disabled= { stateFilter === SHOW_DONE }
-                 onTouchTap={ () => this.setFilter(SHOW_DONE) }
+                 disabled= { stateFilter === types.SHOW_DONE }
+                 onTouchTap={ () => this.setFilter(types.SHOW_DONE) }
                />
                <BottomNavigationItem
                  label='Active'
                  icon={ recentsIcon }
-                 disabled={ stateFilter === SHOW_ACTIVE }
-                 onTouchTap={ () => this.setFilter(SHOW_ACTIVE) }
+                 disabled={ stateFilter === types.SHOW_ACTIVE }
+                 onTouchTap={ () => this.setFilter(types.SHOW_ACTIVE) }
+               />
+               <BottomNavigationItem
+                 label='Important'
+                 icon={ recentsIcon }
+                 disabled={ stateFilter === types.SHOW_IMPORTANT }
+                 onTouchTap={ () => this.setFilter(types.SHOW_IMPORTANT ) }
                />
              </BottomNavigation>
            </Paper>

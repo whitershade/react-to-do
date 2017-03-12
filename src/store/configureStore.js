@@ -10,7 +10,7 @@ export default function configureStore(initialState) {
     rootReducer,
     initialState,
     compose(
-      applyMiddleware(thunk, logger), 
+      applyMiddleware(thunk, logger),
       autoRehydrate()
     )
   ) // <!-- добавляем его в цепочку middleware'ов

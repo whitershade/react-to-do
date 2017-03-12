@@ -57,6 +57,11 @@ body {
   text-decoration: none;
 }
 
+.todo__important {
+  background-color: rgba(0, 188, 212, .1);
+  transition: background-color .3s ease;
+}
+
 .todo-items input {
   text-align: center;
 }

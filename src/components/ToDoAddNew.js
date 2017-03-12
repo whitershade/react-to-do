@@ -38,7 +38,8 @@ export default class ToDoAddNew extends Component {
       text: input.value,
       completed: false,
       deleted: false,
-      onChange: false
+      onChange: false,
+      important: false
     })
 
     input.value = ''

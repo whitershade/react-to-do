@@ -3,9 +3,12 @@ import React, { PropTypes, Component }      from 'react'
 import FlatButton                           from 'material-ui/FlatButton'
 import { Card, CardText }                   from 'material-ui/Card'
 import Checkbox                             from 'material-ui/Checkbox'
-import TextField                            from 'material-ui/TextField';
+import TextField                            from 'material-ui/TextField'
+import ActionFavorite                       from 'material-ui/svg-icons/action/favorite'
+import ActionFavoriteBorder                 from 'material-ui/svg-icons/action/favorite-border'
 
-import { SHOW_ALL, SHOW_DONE, SHOW_ACTIVE } from '../constants/ToDoFilters'
+import * as types                           from '../constants/ToDoFilters'
+
 
 export default class ToDoItems extends Component {
   static PropTypes = {
@@ -59,6 +62,10 @@ export default class ToDoItems extends Component {
     this.props.dispatchToDoItems.markToDoAsOnChange(id, onChange)
   }
 
+  onCheckToggleToDoImportant(id) {
+    this.props.dispatchToDoItems.markToDoAsImportant(id)
+  }
+
   onChangeEditTodo(id, cont, text) {
     this.props.dispatchToDoItems.changeToDoText(id, text)
 
@@ -77,12 +84,14 @@ export default class ToDoItems extends Component {
     }
 
     switch (stateFilter) {
-      case SHOW_ALL:
+      case types.SHOW_ALL:
         return stateTodos
-      case SHOW_DONE:
+      case types.SHOW_DONE:
         return stateTodos.filter(todo => todo.completed === true)
-      case SHOW_ACTIVE:
+      case types.SHOW_ACTIVE:
         return stateTodos.filter(todo => todo.completed === false)
+      case types.SHOW_IMPORTANT:
+        return stateTodos.filter(todo => todo.important === true)
       default:
         return stateTodos
     }
@@ -90,11 +99,12 @@ export default class ToDoItems extends Component {
 
   render() {
     const { stateShowDeleted } = this.props
+
     return (
       <div className='todo-items'>
         { this.getVisibleTodos().map(item => (
           <Card key={ item.id }>
-            <CardText>
+            <CardText className={ item.important ? 'todo__important' : '' }>
               { (item.onChange && !stateShowDeleted) ?
                 ( <TextField hintText='Edit todo'
                              fullWidth={ true }
@@ -106,7 +116,7 @@ export default class ToDoItems extends Component {
                   />
                 ) :
                 ( <div onClick={ this.onClickText.bind(this, item.id, true) }
-                      className={ `todo__text ${ item.completed ? 'todo__completed' : '' }` } > 
+                      className={ `todo__text ${ item.completed ? 'todo__completed' : '' }` } >
                        { item.text }
                  </div> )}
 
@@ -125,6 +135,17 @@ export default class ToDoItems extends Component {
                                                    secondary={ true }
                                                    onClick= { this.onClickText.bind(this, item.id, true) }
                                        />}
+
+                { !stateShowDeleted &&
+                 <div className='todo__checkbox-done'>
+                   <Checkbox
+                     checkedIcon={<ActionFavorite />}
+                     uncheckedIcon={<ActionFavoriteBorder />}
+                     onCheck={ this.onCheckToggleToDoImportant.bind(this, item.id) }
+                     defaultChecked={ item.important }
+                   />
+                 </div>
+                }
                 <div className='todo__checkbox-done'>
                   {!stateShowDeleted && (
                         <Checkbox onCheck={ this.onClickCheckboxToDo.bind(this, item.id) }

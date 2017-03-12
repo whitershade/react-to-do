@@ -64,5 +64,11 @@ describe('ToDoItems reducer', () => {
     expect(
       reducer([ { id: 1, text: 'oldText' }, { id: 2, text: 'oldText' } ], actions.changeToDoText(1, 'newText'))
     ).toEqual([ { id: 1, text: 'newText' }, { id: 2, text: 'oldText' } ])
+  }) 
+
+  it(`should handle ${ types.MARK_TODO_AS_IMPORTANT }`, () => {
+    expect(
+      reducer([ { id: 1, important: false }, { id: 2, important: false } ], actions.markToDoAsImportant(1))
+    ).toEqual([ { id: 1, important: true }, { id: 2, important: false } ])
   })
 })

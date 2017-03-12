@@ -26,6 +26,16 @@ export default function reducerToDoItems(state = initialState, action) {
       })
     }
 
+    case types.MARK_TODO_AS_IMPORTANT: {
+      return state.map(item => {
+        if(item.id === action.id) {
+          return { ...item, important: !item.important}
+        } else {
+          return item
+        }
+      })
+    }
+
     case types.CHANGE_TO_DO_TEXT: {
       return state.map(item => {
         if(item.id === action.id) {

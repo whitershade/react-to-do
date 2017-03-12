@@ -57,3 +57,10 @@ export function changeToDoText(id, text) {
     text
   }
 }
+
+export function markToDoAsImportant(id) {
+  return {
+    type: types.MARK_TODO_AS_IMPORTANT,
+    id
+  }
+}
