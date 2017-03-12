@@ -43,10 +43,6 @@ body {
   min-height: 48px;
 }
 
-.todo-items input {
-  text-align: center;
-}
-
 .todo__buttons {
   display: flex;
   justify-content: center;
@@ -59,4 +55,8 @@ body {
 .aside-menu__link:visited,
 .aside-menu__link:hover {
   text-decoration: none;
+}
+
+.todo-items input {
+  text-align: center;
 }
