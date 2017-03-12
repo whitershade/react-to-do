@@ -1,18 +1,11 @@
-import {
-  ADD_TODO,
-  MARK_TODO_AS_DONE,
-  MARK_TODO_AS_DELETED,
-  FINALLY_REMOVE_TODO,
-  RESTORE_DELETED_TODO,
-  FINALLY_REMOVE_ALL_DELETED_TODOES
-} from '../constans/ToDoItems'
+import * as constans from '../constans/ToDoItems'
 
 export default function reducerToDoItems(state = [], action) {
   switch (action.type) {
-    case ADD_TODO:
+    case constans.ADD_TODO:
       return [ ...state, action.item ]
 
-    case MARK_TODO_AS_DONE:
+    case constans.MARK_TODO_AS_DONE:
       return state.map(item => {
         if(item.id !== action.id) {
           return item;
@@ -21,7 +14,7 @@ export default function reducerToDoItems(state = [], action) {
         }
       })
 
-    case MARK_TODO_AS_DELETED:
+    case constans.MARK_TODO_AS_DELETED:
       return state.map(item => {
         if(item.id === action.id) {
           return Object.assign({}, item, { deleted: true})
@@ -30,7 +23,7 @@ export default function reducerToDoItems(state = [], action) {
         }
       })
 
-    case RESTORE_DELETED_TODO:
+    case constans.RESTORE_DELETED_TODO:
       return state.map(item => {
         if(item.id === action.id) {
           return Object.assign({}, item, { deleted: false})
@@ -39,10 +32,10 @@ export default function reducerToDoItems(state = [], action) {
         }
       })
 
-    case FINALLY_REMOVE_TODO:
+    case constans.FINALLY_REMOVE_TODO:
       return state.filter(item => item.id !== action.id)
 
-    case FINALLY_REMOVE_ALL_DELETED_TODOES:
+    case constans.FINALLY_REMOVE_ALL_DELETED_TODOES:
       return state.filter(item => item.deleted === false)
 
     default:

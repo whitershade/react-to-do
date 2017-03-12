@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import LeftMenu             from './AppStaff/LeftMenu';
-import MainHeader           from './AppStaff/MainHeader';
-
+import LeftMenu             from '../connectors/AppConnectors/LeftMenu';
+import MainHeader           from '../connectors/AppConnectors/MainHeader';
+ 
 
 export default class App extends Component {
   render() {
