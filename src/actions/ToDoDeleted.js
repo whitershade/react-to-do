@@ -1,6 +1,6 @@
-import { SHOW_DELETED_TODOS } from '../constans/ToDoItems'
+import { SHOW_DELETED_TODOS } from '../constants/ToDoItems'
 
-export function actionShowDeletedTodos(isShow) {
+export function showDeletedTodos(isShow) {
   return {
     type: SHOW_DELETED_TODOS,
     isShow

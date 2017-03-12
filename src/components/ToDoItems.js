@@ -4,7 +4,7 @@ import FlatButton                           from 'material-ui/FlatButton'
 import { Card, CardText }                   from 'material-ui/Card'
 import Checkbox                             from 'material-ui/Checkbox'
 
-import { SHOW_ALL, SHOW_DONE, SHOW_ACTIVE } from '../constans/ToDoFilters'
+import { SHOW_ALL, SHOW_DONE, SHOW_ACTIVE } from '../constants/ToDoFilters'
 
 export default class ToDoItems extends Component {
   static PropTypes = {
@@ -31,19 +31,19 @@ export default class ToDoItems extends Component {
   }
 
   onClickCheckboxToDo(id) {
-    this.props.dispatchToDoItems.actionMarkToDoAsDone(id)
+    this.props.dispatchToDoItems.markToDoAsDone(id)
   }
 
   onClickMarkToDoAsDeleted(id) {
-    this.props.dispatchToDoItems.actionMakrToDoAsDeleted(id)
+    this.props.dispatchToDoItems.markToDoAsDeleted(id)
   }
 
   onClickFinallyDeleteToDo(id) {
-    this.props.dispatchToDoItems.actionFinallyRemoveToDo(id)
+    this.props.dispatchToDoItems.finallyRemoveToDo(id)
   }
 
   onClickRestoreToDo(id) {
-    this.props.dispatchToDoItems.actionRestoreToDo(id)
+    this.props.dispatchToDoItems.restoreToDo(id)
   }
 
   getVisibleTodos() {

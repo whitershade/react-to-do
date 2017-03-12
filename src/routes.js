@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 
-import { rootPath, deletedPath} from './constans/Routes.js'
+import { rootPath, deletedPath} from './constants/Routes.js'
 
 import App   from './containers/App'
 import Main  from './containers/Main'

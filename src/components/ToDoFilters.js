@@ -3,7 +3,7 @@ import Paper                                    from 'material-ui/Paper'
 import FontIcon                                 from 'material-ui/FontIcon'
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation'
 
-import { SHOW_ALL, SHOW_DONE, SHOW_ACTIVE }     from '../constans/ToDoFilters'
+import { SHOW_ALL, SHOW_DONE, SHOW_ACTIVE }     from '../constants/ToDoFilters'
 
 
 const recentsIcon = <FontIcon className='material-icons'></FontIcon>;

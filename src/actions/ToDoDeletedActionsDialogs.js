@@ -1,6 +1,6 @@
-import { OPEN_FINALLY_DELETE_ALL_TODOES_DIALOG } from '../constans/ToDoDeletedActionsDialogs'
+import { OPEN_FINALLY_DELETE_ALL_TODOES_DIALOG } from '../constants/ToDoDeletedActionsDialogs'
 
-export function actionSetFinallyDeleteDialogIsOpenState(isOpen) {
+export function setFinallyDeleteDialogIsOpenState(isOpen) {
   return {
       type: OPEN_FINALLY_DELETE_ALL_TODOES_DIALOG,
       isOpen

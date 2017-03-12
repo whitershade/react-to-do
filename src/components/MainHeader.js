@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 
 import AppBar from 'material-ui/AppBar';
 
-import { rootPath, rootName, deletedPath, deletedName } from '../constans/Routes'
+import { rootPath, rootName, deletedPath, deletedName } from '../constants/Routes'
 
 
 export default class MainHeader extends Component {
@@ -11,7 +11,7 @@ export default class MainHeader extends Component {
   }
 
   handleToggle() {
-    const { LeftMenuActions: { changeLeftMenuState }, isOpen } = this.props;
+    const { AsideMenuActions: { changeLeftMenuState }, isOpen } = this.props;
     changeLeftMenuState(!isOpen);
   }
 

@@ -1,10 +1,10 @@
-import { bindActionCreators }                   from 'redux'
-import { connect }                              from 'react-redux'
+import { bindActionCreators }                from 'redux'
+import { connect }                           from 'react-redux'
 
-import * as ToDoDeletedActionsDialogsAcitons    from '../../actions/ToDoDeletedActionsDialogs'
-import * as actionFinallyDeleteRemovedToDoes    from '../../actions/ToDoItems'
-import ToDoDeletedMenuActions                   from '../../components/ToDoDeletedMenuActions'
+import { finallyDeleteRemovedToDoes }        from '../../actions/ToDoItems'
+import { setFinallyDeleteDialogIsOpenState } from '../../actions/ToDoDeletedActionsDialogs'
 
+import ToDoDeletedMenuActions                from '../../components/ToDoDeletedMenuActions'
 
 
 function mapStateToProps(state) {
@@ -15,7 +15,8 @@ function mapStateToProps(state) {
 
  function mapDispatchToProps(dispatch) {
    return {
-     dispatchSetFinallyDeleteDialogIsOpenState: bindActionCreators({ ...ToDoDeletedActionsDialogsAcitons, ...actionFinallyDeleteRemovedToDoes}, dispatch)
+     setFinallyDeleteDialogIsOpenState: bindActionCreators(setFinallyDeleteDialogIsOpenState, dispatch),
+     finallyDeleteRemovedToDoes: bindActionCreators(finallyDeleteRemovedToDoes, dispatch)
    }
  }
 

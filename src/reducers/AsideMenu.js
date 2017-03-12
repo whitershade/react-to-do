@@ -1,10 +1,16 @@
-import { LEFT_MENU_IS_OPEN } from '../constans/LeftMenu'
 import { LOCATION_CHANGE }   from 'react-router-redux'
 import { REHYDRATE }         from 'redux-persist/constants'
 
-export default function page(state = { isOpen: false }, action) {
+import { ASIDE_MENU_IS_OPEN } from '../constants/AsideMenu'
+
+
+export const initialState = {
+  isOpen: false
+}
+
+export default function page(state = initialState, action) {
   switch (action.type) {
-    case LEFT_MENU_IS_OPEN:
+    case ASIDE_MENU_IS_OPEN:
       return Object.assign({}, state, { isOpen: action.isOpen })
 
     case LOCATION_CHANGE:

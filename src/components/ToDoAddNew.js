@@ -33,7 +33,7 @@ export default class ToDoAddNew extends Component {
       return
     }
 
-    this.props.dispatchToDoAddNew.actionAddToDo({
+    this.props.addToDo({
       id: Date.now(),
       text: input.value,
       completed: false,

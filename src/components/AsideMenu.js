@@ -3,7 +3,7 @@ import React, { PropTypes, Component } from 'react'
 import Drawer                          from 'material-ui/Drawer'
 import AppBar                          from 'material-ui/AppBar'
 
-import { rootPath, deletedPath}        from '../constans/Routes.js'
+import { rootPath, deletedPath}        from '../constants/Routes.js'
 import AsideMenuLink                   from './AsideMenuLink'
 
 
@@ -18,7 +18,7 @@ export default class LeftMenu extends Component {
   }
 
   handleToggle() {
-    const { LeftMenuActions: { changeLeftMenuState }, stateIsOpen } = this.props
+    const { AsideMenuActions: { changeLeftMenuState }, stateIsOpen } = this.props
     changeLeftMenuState(!stateIsOpen);
   }
 

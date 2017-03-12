@@ -1,0 +1,1 @@
+export const ASIDE_MENU_IS_OPEN = 'ASIDE_MENU_IS_OPEN';

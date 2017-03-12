@@ -1,42 +1,43 @@
-import {
-   MARK_TODO_AS_DONE,
-   MARK_TODO_AS_DELETED,
-   FINALLY_REMOVE_TODO,
-   RESTORE_DELETED_TODO,
-   FINALLY_REMOVE_ALL_DELETED_TODOES
- } from '../constans/ToDoItems'
+import * as types from '../constants/ToDoItems'
 
 
-export function actionMarkToDoAsDone(id) {
+export function addToDo(item) {
   return {
-    type: MARK_TODO_AS_DONE,
+      type: types.ADD_TODO,
+      item
+    }
+}
+
+export function markToDoAsDone(id) {
+  return {
+    type: types.MARK_TODO_AS_DONE,
     id
   }
 }
 
-export function actionMakrToDoAsDeleted(id) {
+export function markToDoAsDeleted(id) {
   return {
-    type: MARK_TODO_AS_DELETED,
+    type: types.MARK_TODO_AS_DELETED,
     id
   }
 }
 
-export function actionFinallyRemoveToDo(id) {
+export function finallyRemoveToDo(id) {
   return {
-    type: FINALLY_REMOVE_TODO,
+    type: types.FINALLY_REMOVE_TODO,
     id
   }
 }
 
-export function actionRestoreToDo(id) {
+export function restoreToDo(id) {
   return {
-    type: RESTORE_DELETED_TODO,
+    type: types.RESTORE_DELETED_TODO,
     id
   }
 }
 
-export function actionFinallyDeleteRemovedToDoes() {
+export function finallyDeleteRemovedToDoes() {
   return {
-    type: FINALLY_REMOVE_ALL_DELETED_TODOES
+    type: types.FINALLY_REMOVE_ALL_DELETED_TODOES
   }
 }

@@ -1,18 +1,19 @@
+import { connect }            from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as LeftMenuActions from '../../actions/LeftMenu'
-import MainHeader from '../../components/MainHeader'
+
+import * as AsideMenuActions  from '../../actions/AsideMenu'
+import MainHeader             from '../../components/MainHeader'
 
 function mapStateToProps(state) {
    return {
-     isOpen: state.LeftMenu.isOpen,
+     isOpen: state.AsideMenu.isOpen,
      routing: state.routing.locationBeforeTransitions
    }
  }
 
  function mapDispatchToProps(dispatch) {
    return {
-     LeftMenuActions: bindActionCreators(LeftMenuActions, dispatch)
+     AsideMenuActions: bindActionCreators(AsideMenuActions , dispatch)
    }
  }
 

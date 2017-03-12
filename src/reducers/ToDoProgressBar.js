@@ -1,10 +1,14 @@
-import { CHANGE_PROGRESS_BAR_VALUE } from '../constans/ToDoItems'
+import * as types from '../constants/ToDoProgressBar'
 
 
-export default function reducerToDoProgressBar(state = { value: 0 }, action) {
+export const initialState = {
+  value: 0
+}
+
+export default function reducerToDoProgressBar(state = initialState, action) {
   switch (action.type) {
-    case CHANGE_PROGRESS_BAR_VALUE:
-      return Object.assign({}, state, { value: action.value })
+    case types.CHANGE_PROGRESS_BAR_VALUE:
+      return { ...state, value: action.value }
     default:
       return state
   }

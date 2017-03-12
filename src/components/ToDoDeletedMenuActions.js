@@ -5,28 +5,28 @@ import RaisedButton from 'material-ui/RaisedButton'
 
 export default class Dialogs extends React.Component {
   handleOpen = () => {
-    this.props.dispatchSetFinallyDeleteDialogIsOpenState.actionSetFinallyDeleteDialogIsOpenState(true)
+    this.props.setFinallyDeleteDialogIsOpenState(true)
   }
 
   handleClose = () => {
-    this.props.dispatchSetFinallyDeleteDialogIsOpenState.actionSetFinallyDeleteDialogIsOpenState(false)
+    this.props.setFinallyDeleteDialogIsOpenState(false)
   }
 
   removeAll = () => {
-    this.props.dispatchSetFinallyDeleteDialogIsOpenState.actionFinallyDeleteRemovedToDoes();
-    this.props.dispatchSetFinallyDeleteDialogIsOpenState.actionSetFinallyDeleteDialogIsOpenState(false)
+    this.props.finallyDeleteRemovedToDoes();
+    this.props.setFinallyDeleteDialogIsOpenState(false)
   }
 
   render() {
     const actions = [
       <FlatButton
-        label="Cancel"
+        label='Cancel'
         primary={false}
         keyboardFocused={true}
         onTouchTap={this.handleClose}
       />,
       <FlatButton
-        label="Remove All"
+        label='Remove All'
         primary={true}
         onTouchTap={this.removeAll}
       />
@@ -34,9 +34,9 @@ export default class Dialogs extends React.Component {
 
     return (
       <div className='todo-deleted-menu'>
-          <RaisedButton label="Remove All" onTouchTap={this.handleOpen} />
+          <RaisedButton label='Remove All' onTouchTap={this.handleOpen} />
           <Dialog
-            title="Finally remove all todoes from the basket"
+            title='Finally remove all todoes from the basket'
             actions={actions}
             modal={false}
             open={this.props.stateFinallyDeleteDialogIsOpen}
